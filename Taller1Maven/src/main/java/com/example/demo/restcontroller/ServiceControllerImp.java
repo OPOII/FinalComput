@@ -1,6 +1,11 @@
 package com.example.demo.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.delegate.ServiceDelegate;
@@ -11,26 +16,27 @@ import com.example.demo.modelo.Tmio1ServicioPK;
 public class ServiceControllerImp implements ServiceController {
 	@Autowired
 	private ServiceDelegate delegado;
-	@Override
+
+	@GetMapping("/api/servicios/")
 	public Iterable<Tmio1Servicio> getServicios() {
 		return delegado.getServicios();
 	}
 
-	@Override
-	public Tmio1Servicio addServicio(Tmio1Servicio servicio) {
+	@PostMapping("/api/servicios/")
+	public Tmio1Servicio addServicio(@RequestBody Tmio1Servicio servicio) {
 		return delegado.addServicio(servicio);
 	}
 
-	@Override
-	public Tmio1Servicio delServicio(Tmio1ServicioPK id) {
-		Tmio1Servicio service=delegado.getServicio(id);
-		return null;
+	@DeleteMapping("/api/servicios/{id}")
+	public Tmio1Servicio delServicio(@PathVariable Tmio1ServicioPK id) {
+		Tmio1Servicio service = delegado.getServicio(id);
+		delegado.delServicio(service);
+		return service;
 	}
 
-	@Override
-	public Tmio1Servicio getServicio(Tmio1ServicioPK id) {
-		// TODO Auto-generated method stub
-		return null;
+	@GetMapping("/api/servicios/{id}")
+	public Tmio1Servicio getServicio(@PathVariable Tmio1ServicioPK id) {
+		return delegado.getServicio(id);
 	}
 
 }

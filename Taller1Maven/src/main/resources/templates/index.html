@@ -22,55 +22,62 @@
 				<h2 th:case="null">Select your action</h2>
 
 				<div sec:authorize="hasRole('operator')">
-				<p>
-					<a href="/servicios/"><i class="fas fa-arrow-circle-right ml-2"></i> Go to
-						Servicios</a>
-				</p>
+					<p>
+						<a href="/servicios/"><i
+							class="fas fa-arrow-circle-right ml-2"></i> Go to Servicios</a>
+					</p>
 				</div>
 				<div sec:authorize="hasRole('operator')">
-				<p>
-					<a href="/editar/"><i class="fas fa-user-edit ml-2"></i> edit services</a>
-				</p>
+					<p>
+						<a href="/editar/"><i class="fas fa-user-edit ml-2"></i> edit
+							services</a>
+					</p>
 				</div>
 				<div sec:authorize="hasRole('operator')">
-				<p>
-					<a href="/consultar/"><i class="fas fa-user-edit ml-2"></i> Consult service</a>
-				</p>
+					<p>
+						<a href="/consultar/"><i class="fas fa-user-edit ml-2"></i>
+							Consult service</a>
+					</p>
 				</div>
 				<div sec:authorize="hasRole('operator')">
-				<p>
-					<a href="/logout"><i class="fas fa-sign-out ml-2"></i> Close session</a>
-				</p>
+					<p>
+						<a href="/logout"><i class="fas fa-sign-out ml-2"></i> Close
+							session</a>
+					</p>
 				</div>
-				
+
 				<div sec:authorize="hasRole('admin')">
-				<p>
-					<a href="/rutas/"><i class="fas fa-route ml-2"></i> Go to
-						Rutas</a>
-				</p>
+					<p>
+						<a href="/rutas/"><i class="fas fa-route ml-2"></i> Go to
+							Rutas</a>
+					</p>
 				</div>
-				
+
 				<div sec:authorize="hasRole('admin')">
-				<p>		
-					<a href="/conductores/"><i class="fas fa-address-card ml-2"></i> Go to
-						Conductores</a>
-				</p>
-				</div>
-					<div sec:authorize="hasRole('admin')">
-				<p>		
-					<a href="/buses/"><i class="fas fa-bus ml-2"></i> Go to
-						Buses</a>
-				</p>
+					<p>
+						<a href="/conductores/"><i class="fas fa-address-card ml-2"></i>
+							Go to Conductores</a>
+					</p>
 				</div>
 				<div sec:authorize="hasRole('admin')">
-				<p>
-				<a href="/search/"><i class="fas fa-search ml-2"></i> Search</a>
-				</p>
+					<p>
+						<a href="/buses/"><i class="fas fa-bus ml-2"></i> Go to Buses</a>
+					</p>
+					<p>
+						<a href="/sitios/"><i class="fas fa-bus ml-2"></i> Go to
+							Sitios</a>
+					</p>
 				</div>
 				<div sec:authorize="hasRole('admin')">
-				<p>
-					<a href="/logout"><i class="fas fa-sign-out ml-2"></i> Close session</a>
-				</p>
+					<p>
+						<a href="/search/"><i class="fas fa-search ml-2"></i> Search</a>
+					</p>
+				</div>
+				<div sec:authorize="hasRole('admin')">
+					<p>
+						<a href="/logout"><i class="fas fa-sign-out ml-2"></i> Close
+							session</a>
+					</p>
 				</div>
 			</div>
 		</div>
