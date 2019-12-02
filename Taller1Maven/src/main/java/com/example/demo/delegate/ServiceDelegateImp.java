@@ -44,7 +44,7 @@ public class ServiceDelegateImp implements ServiceDelegate {
 	}
 
 	@Override
-	public Tmio1Servicio getBus(Tmio1ServicioPK i) {
+	public Tmio1Servicio getServicio(Tmio1ServicioPK i) {
 		Tmio1Servicio car = template.getForObject(SERVER + "/api/servicios/" + i, Tmio1Servicio.class);
 		return car;
 	}

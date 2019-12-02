@@ -13,19 +13,17 @@ public class ServiceControllerImp implements ServiceController {
 	private ServiceDelegate delegado;
 	@Override
 	public Iterable<Tmio1Servicio> getServicios() {
-		// TODO Auto-generated method stub
-		return null;
+		return delegado.getServicios();
 	}
 
 	@Override
 	public Tmio1Servicio addServicio(Tmio1Servicio servicio) {
-		// TODO Auto-generated method stub
-		return null;
+		return delegado.addServicio(servicio);
 	}
 
 	@Override
-	public Tmio1Servicio delServicio(Tmio1Servicio id) {
-		// TODO Auto-generated method stub
+	public Tmio1Servicio delServicio(Tmio1ServicioPK id) {
+		Tmio1Servicio service=delegado.getServicio(id);
 		return null;
 	}
 

@@ -11,5 +11,5 @@ public Iterable<Tmio1Servicio> getServicios();
 	
 	public void delServicio(Tmio1Servicio bus);
 	
-	public Tmio1Servicio getBus(Tmio1ServicioPK i);
+	public Tmio1Servicio getServicio(Tmio1ServicioPK i);
 }

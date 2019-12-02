@@ -9,7 +9,7 @@ public interface ServiceController {
 	
 	public Tmio1Servicio addServicio(Tmio1Servicio servicio);
 	
-	public Tmio1Servicio delServicio(Tmio1Servicio id);
+	public Tmio1Servicio delServicio(Tmio1ServicioPK id);
 	
 	public Tmio1Servicio getServicio(Tmio1ServicioPK id);
 }
