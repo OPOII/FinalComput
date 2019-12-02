@@ -26,8 +26,8 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Description</th>
-								<th>Name</th>
+								<th>Descripcion</th>
+								<th>Nombre</th>
 								<th>Edit</th>
 								<th>Eliminate</th>
 							</tr>
@@ -35,8 +35,8 @@
 						<tbody>
 							<tr th:each="tmio1Sitio : ${tmio1Sitio}">
 								<td class="text-info" th:text="${tmio1Sitio.Id}"></td>
-								<td class="text-info" th:text="${tmio1Sitio.Description}"></td>
-								<td class="text-info" th:text="${tmio1Sitio.Name}"></td>
+								<td class="text-info" th:text="${tmio1Sitio.Descripcion}"></td>
+								<td class="text-info" th:text="${tmio1Sitio.Nombre}"></td>
 								<td><a th:href="@{/sitios/edit/{id}(id=${tmio1Sitio.id})}"
 									class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
 								<td><a th:href="@{/sitios/eliminate/{id}(id=${tmio1Sitio.id})}"
