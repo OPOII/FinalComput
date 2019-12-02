@@ -20,7 +20,7 @@ public class ServiceDelegateImp implements ServiceDelegate {
 
 	@Override
 	public Iterable<Tmio1Servicio> getServicios() {
-		Tmio1Servicio[] servicio=template.getForObject(SERVER+"/api/servicios", Tmio1Servicio[].class);
+		Tmio1Servicio[] servicio=template.getForObject(SERVER+"/api/servicios/", Tmio1Servicio[].class);
 		List<Tmio1Servicio> at;
 		try {
 			at=Arrays.asList(servicio);
