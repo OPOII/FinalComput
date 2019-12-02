@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2019-09-25T04:01:17 COT" name="Default suite" finished-at="2019-09-25T04:01:17 COT" duration-ms="91">
+    <groups>
+    </groups>
+    <test started-at="2019-09-25T04:01:17 COT" name="Default test" finished-at="2019-09-25T04:01:17 COT" duration-ms="91">
+      <class name="testMethods.mockitoConductorTest">
+        <test-method is-config="true" signature="inicializar()[pri:0, instance:testMethods.mockitoConductorTest@5733f295]" started-at="2019-09-25T04:01:17 COT" name="inicializar" finished-at="2019-09-25T04:01:17 COT" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- inicializar -->
+        <test-method signature="guardar()[pri:0, instance:testMethods.mockitoConductorTest@5733f295]" started-at="2019-09-25T04:01:17 COT" name="guardar" finished-at="2019-09-25T04:01:17 COT" duration-ms="29" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- guardar -->
+        <test-method signature="guardarFecha()[pri:0, instance:testMethods.mockitoConductorTest@5733f295]" started-at="2019-09-25T04:01:17 COT" name="guardarFecha" finished-at="2019-09-25T04:01:17 COT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- guardarFecha -->
+        <test-method signature="guardarNulo()[pri:0, instance:testMethods.mockitoConductorTest@5733f295]" started-at="2019-09-25T04:01:17 COT" name="guardarNulo" finished-at="2019-09-25T04:01:17 COT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- guardarNulo -->
+      </class> <!-- testMethods.mockitoConductorTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
