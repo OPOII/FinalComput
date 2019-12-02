@@ -13,49 +13,32 @@
 </head>
 <body>
 	<div class="container my-5">
-		<h2 class="mb-5">Update User</h2>
+		<h2 class="mb-5">Update Site</h2>
 		<div class="row">
 			<div class="col-md-5">
-				<form action="#" th:object="${tmio1Servicio}"
-					th:action="@{/tmio1Servicio/edit/{id}(id=${tmio1Servicio.id})}" method="post">
+				<form action="#" th:object="${tmiosSitio}"
+					th:action="@{/sitios/edit/{id}(id=${tmio1Sitio.id})}" method="post">
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="idRuta" class="col-form-label">idRuta</label> <input
-								type="text" th:field="*{idRuta}" class="form-control"
-								id="idRuta" placeholder="idRuta"> <span
-								th:if="${#fields.hasErrors('idRuta')}" th:errors="*{idRuta}"
+							<label for="id" class="col-form-label">id</label> <input
+								type="text" th:field="*{id}" class="form-control"
+								id="id" placeholder="id"> <span
+								th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
 								class="text-danger"></span>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="cedulaConductor" class="col-form-label">cedulaConductor</label>
-							<input type="text" th:field="*{cedulaConductor}" class="form-control"
-								id="cedulaConductor" placeholder="cedulaConductor"> <span
-								th:if="${#fields.hasErrors('cedulaConductor')}"
-								th:errors="*{cedulaConductor}" class="text-danger"></span>
+							<label for="nombre" class="col-form-label">nombre</label>
+							<input type="text" th:field="*{nombre}" class="form-control"
+								id="nombre" placeholder="nombre"> <span
+								th:if="${#fields.hasErrors('nombre')}"
+								th:errors="*{nombre}" class="text-danger"></span>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="idBus" class="col-form-label">idBus</label> <input
-								type="text" th:field="*{idBus}" class="form-control"
-								id="idBus" placeholder="idBus"> <span
-								th:if="${#fields.hasErrors('idBus')}"
-								th:errors="*{idBus}" class="text-danger"></span>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="fechaInicio" class="col-form-label">FechaInicio</label>
-							<input type="date" th:field="*{fechaInicio}"
-								class="form-control" id="fechaInicio"
-								placeholder="FechaInicio"> <span
-								th:if="${#fields.hasErrors('fechaInicio')}"
-								th:errors="*{fechaInicio}" class="text-danger"></span>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="fechaFin" class="col-form-label">FechaFin</label>
-							<input type="date" th:field="*{fechaFin}"
-								class="form-control" id="fechaFin"
-								placeholder="FechaFin"> <span
-								th:if="${#fields.hasErrors('fechaFin')}"
-								th:errors="*{fechaFin}" class="text-danger"></span>
-						</div>
+							<label for="descripcion" class="col-form-label">descripcion</label> <input
+								type="text" th:field="*{descripcion}" class="form-control"
+								id="descripcion" placeholder="descripcion"> <span
+								th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcio}" class="text-danger"></span>
 					</div>
 					<div class="row">
 						<div class="col-md-4 mt-3">
