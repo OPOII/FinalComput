@@ -29,6 +29,7 @@
 								<th>Description</th>
 								<th>Name</th>
 								<th>Edit</th>
+								<th>Eliminate</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -38,7 +39,8 @@
 								<td class="text-info" th:text="${tmio1Sitio.Name}"></td>
 								<td><a th:href="@{/sitios/edit/{id}(id=${tmio1Sitio.id})}"
 									class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-								
+								<td><a th:href="@{/sitios/eliminate/{id}(id=${tmio1Sitio.id})}"
+									class="btn btn-primary"><i class="fas fa-user-edit ml2"></i></a></td>
 							</tr>
 						</tbody>
 					</table>

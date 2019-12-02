@@ -12,7 +12,7 @@ import com.example.demo.modelo.Tmio1Bus;
 public class BusDelegateImp implements BusDelegate {
 	RestTemplate template;
 	final String SERVER = "http://localhost:8082/";
-
+	//A traves del template me conecto al controlador 
 	public BusDelegateImp() {
 		template = new RestTemplate();
 	}

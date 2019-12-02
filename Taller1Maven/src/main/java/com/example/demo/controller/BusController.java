@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.delegate.BusDelegate;
 import com.example.demo.model.BusApp;
 import com.example.demo.model.UserApp;
 import com.example.demo.modelo.Tmio1Bus;
@@ -29,7 +30,11 @@ public class BusController {
 
 	Tmio1BusService servicio;
 	Tmio1Bus universal;
-
+	//Delegado hace un llamado al rest template, y el rest template llama al rest controller
+	@Autowired
+	private BusDelegate delegado;
+	//Corregir todo esto, ya que aqui se usa el delegado
+	
 	@Autowired
 	public BusController(Tmio1BusService servi) {
 		servicio = servi;

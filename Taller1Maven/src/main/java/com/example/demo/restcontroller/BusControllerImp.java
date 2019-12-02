@@ -19,6 +19,7 @@ import com.example.demo.service.ITmio1BusService;
 public class BusControllerImp implements BusController {
 	@Autowired
 	private BusDelegate delegado;
+	//Esto usa el servicio, no el delegado
 
 	@GetMapping("/api/buses")
 	public Iterable<Tmio1Bus> getBuses() {
