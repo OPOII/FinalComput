@@ -19,7 +19,7 @@ public class BusDelegateImp implements BusDelegate {
 
 	@Override
 	public Iterable<Tmio1Bus> getBuses() {
-		Tmio1Bus[] bus = template.getForObject(SERVER +"buses", Tmio1Bus[].class);
+		Tmio1Bus[] bus = template.getForObject(SERVER +"tmio1Ruta", Tmio1Bus[].class);
 		List<Tmio1Bus> at;
 		try {
 			at = Arrays.asList(bus);

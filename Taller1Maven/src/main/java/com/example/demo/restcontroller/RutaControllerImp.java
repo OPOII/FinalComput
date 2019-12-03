@@ -17,6 +17,7 @@ public class RutaControllerImp implements RutaController {
 
 	@Autowired
 	private ITmio1RutaService servicio;
+
 	@GetMapping("/api/rutas")
 	public Iterable<Tmio1Ruta> getRutas() {
 		return servicio.findAll();
@@ -37,7 +38,7 @@ public class RutaControllerImp implements RutaController {
 	public Tmio1Ruta delRuta(@PathVariable Integer id) {
 		Tmio1Ruta ruta = null;
 		try {
-			ruta=servicio.buscar(id);
+			ruta = servicio.buscar(id);
 			servicio.eliminar(ruta.getId());
 			return ruta;
 		} catch (Exception e) {

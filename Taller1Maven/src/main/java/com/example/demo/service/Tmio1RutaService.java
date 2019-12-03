@@ -52,7 +52,6 @@ public class Tmio1RutaService implements ITmio1RutaService {
 
 	@Override
 	public Iterable<Tmio1Ruta> findAll() {
-		// TODO Auto-generated method stub
 		return repositorio.findAll();
 	}
 

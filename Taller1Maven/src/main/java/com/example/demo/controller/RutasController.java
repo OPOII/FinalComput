@@ -32,7 +32,7 @@ public class RutasController {
 	@GetMapping("/rutas/")
 	public String indexRutas(Model modelo) {
 		modelo.addAttribute("tmio1Ruta", delegado.getRutas());
-		return "/rutas/indexRutas";
+		return "rutas/indexRutas";
 	}
 
 	@GetMapping("/rutas/add")
