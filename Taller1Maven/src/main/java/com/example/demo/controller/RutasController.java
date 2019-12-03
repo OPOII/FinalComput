@@ -23,7 +23,7 @@ public class RutasController {
 
 //	Tmio1RutaService servicio;
 	Tmio1Ruta universal;
-	private RutaDelegate delegado;
+	RutaDelegate delegado;
 	@Autowired
 	public RutasController(RutaDelegate service) {
 		delegado = service;

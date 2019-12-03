@@ -23,8 +23,7 @@ public class ConductorController {
 
 //	Tmio1ConductoreService servicio;
 	Tmio1Conductore universal;
-	@Autowired
-	private ConductoreDelegate delegado;
+	ConductoreDelegate delegado;
 	@Autowired
 	public ConductorController(ConductoreDelegate service) {
 		delegado = service;

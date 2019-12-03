@@ -46,6 +46,9 @@ public class Tmio1Servicio implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_contratacion")
 	private LocalDate fechaContratacion;
+	
+	private Integer hash;
+
 	public Tmio1Servicio() {
 	}
 	
@@ -87,6 +90,13 @@ public class Tmio1Servicio implements Serializable {
 
 	public void setTmio1Ruta(Tmio1Ruta tmio1Ruta) {
 		this.tmio1Ruta = tmio1Ruta;
+	}
+	public Integer getHash() {
+		return hash;
+	}
+
+	public void setHash(Integer hash) {
+		this.hash = hash;
 	}
 
 }

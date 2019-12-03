@@ -29,11 +29,9 @@ import com.example.demo.validation.Update;
 @Controller
 public class BusController {
 
-//	Tmio1BusService servicio;
 	Tmio1Bus universal;
 	//Delegado hace un llamado al rest template, y el rest template llama al rest controller
-	@Autowired
-	private BusDelegate delegado;
+	 BusDelegate delegado;
 	//Corregir todo esto, ya que aqui se usa el delegado
 	
 	@Autowired
