@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.delegate.SitioDelegado;
+import com.example.demo.delegate.SitioDelegate;
 import com.example.demo.modelo.Tmio1Bus;
 import com.example.demo.modelo.Tmio1Sitio;
 import com.example.demo.service.Tmio1SitioService;
@@ -24,9 +24,9 @@ import com.example.demo.validation.ValideEdit;
 public class SitioController {
 
 	Tmio1Sitio sitio;
-	SitioDelegado delegado;
+	SitioDelegate delegado;
 	@Autowired
-	public SitioController(SitioDelegado servi) {
+	public SitioController(SitioDelegate servi) {
 		delegado = servi;
 	}
 

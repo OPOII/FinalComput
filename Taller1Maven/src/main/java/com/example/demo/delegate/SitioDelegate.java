@@ -2,7 +2,7 @@ package com.example.demo.delegate;
 
 import com.example.demo.modelo.Tmio1Sitio;
 
-public interface SitioDelegado {
+public interface SitioDelegate {
 
 	public Iterable<Tmio1Sitio> getSitios();
 	
