@@ -10,33 +10,49 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.delegate.RutaDelegate;
 import com.example.demo.modelo.Tmio1Ruta;
+import com.example.demo.service.ITmio1RutaService;
 
 @RestController
 public class RutaControllerImp implements RutaController {
 
 	@Autowired
-	private RutaDelegate delegado;
-
-	@GetMapping("/api/rutas/")
+	private ITmio1RutaService servicio;
+	@GetMapping("/api/rutas")
 	public Iterable<Tmio1Ruta> getRutas() {
-		return delegado.getRutas();
+		return servicio.findAll();
 	}
 
-	@PostMapping("/api/rutas/")
+	@PostMapping("/api/rutas")
 	public Tmio1Ruta addRuta(@RequestBody Tmio1Ruta ruta) {
-		return delegado.addRuta(ruta);
+		try {
+			servicio.agregar(ruta);
+			return ruta;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@DeleteMapping("/api/rutas/{id}")
 	public Tmio1Ruta delRuta(@PathVariable Integer id) {
-		Tmio1Ruta ruta = delegado.getRuta(id);
-		delegado.delRuta(ruta);
-		return ruta;
+		Tmio1Ruta ruta = null;
+		try {
+			ruta=servicio.buscar(id);
+			servicio.eliminar(ruta.getId());
+			return ruta;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@GetMapping("/api/rutas/{id}")
 	public Tmio1Ruta getRuta(@PathVariable Integer id) {
-		return delegado.getRuta(id);
+		try {
+			return servicio.buscar(id);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

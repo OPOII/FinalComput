@@ -19,6 +19,7 @@ public class ConductorControllerImp implements ConductorController {
 
 	@Autowired
 	private ITmio1ConductoreService servicio;
+
 	@GetMapping("/api/conductores")
 	public Iterable<Tmio1Conductore> getConductores() {
 		return servicio.findAll();
@@ -36,16 +37,16 @@ public class ConductorControllerImp implements ConductorController {
 
 	@DeleteMapping("/api/conductores/{id}")
 	public Tmio1Conductore delConductor(@PathVariable String conductor) {
-		Tmio1Conductore buscado=null;
+		Tmio1Conductore buscado = null;
 		try {
-			buscado=servicio.buscar(conductor);
+			buscado = servicio.buscar(conductor);
 			servicio.eliminar(buscado.getCedula());
 			return buscado;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-				
+
 	}
 
 	@GetMapping("/api/conductores/{id}")

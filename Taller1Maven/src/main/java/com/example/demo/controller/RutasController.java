@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.delegate.RutaDelegate;
 import com.example.demo.model.BusApp;
 import com.example.demo.model.RutaApp;
 import com.example.demo.modelo.Tmio1Bus;
@@ -20,16 +21,17 @@ import com.example.demo.service.Tmio1RutaService;
 @Controller
 public class RutasController {
 
-	Tmio1RutaService servicio;
+//	Tmio1RutaService servicio;
 	Tmio1Ruta universal;
+	private RutaDelegate delegado;
 	@Autowired
-	public RutasController(Tmio1RutaService service) {
-		servicio = service;
+	public RutasController(RutaDelegate service) {
+		delegado = service;
 	}
 
 	@GetMapping("/rutas/")
 	public String indexRutas(Model modelo) {
-		modelo.addAttribute("tmio1Ruta", servicio.findAll());
+		modelo.addAttribute("tmio1Ruta", delegado.getRutas());
 		return "/rutas/indexRutas";
 	}
 
@@ -46,7 +48,7 @@ public class RutasController {
 			if (bindingResult.hasErrors()) {
 				return "rutas/addRutas";
 			} else {
-				servicio.agregar(ruta);
+				delegado.addRuta(ruta);
 			}
 		return "redirect:/rutas/";
 	}
@@ -64,7 +66,7 @@ public class RutasController {
 			if (bindingResult.hasErrors()) {
 				return "rutas/searchRutas";
 			} else {
-				Tmio1Ruta bur = servicio.buscar(bus.getId());
+				Tmio1Ruta bur = delegado.getRuta(bus.getId());
 				if (bur != null) {
 					universal = bur;
 					System.out.println("Si hay Ruta");
