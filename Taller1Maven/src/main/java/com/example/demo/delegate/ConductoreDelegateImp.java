@@ -14,6 +14,7 @@ public class ConductoreDelegateImp extends GenericTemplate implements Conductore
 	public ConductoreDelegateImp() {
 		super();
 	}
+
 //cambiar todo por /api/nombredelcoso/
 	@Override
 	public Iterable<Tmio1Conductore> getConductores() {
@@ -30,8 +31,8 @@ public class ConductoreDelegateImp extends GenericTemplate implements Conductore
 
 	@Override
 	public Tmio1Conductore addConductor(Tmio1Conductore newconductor) {
-		Tmio1Conductore conductor = restTemplate.postForEntity(SERVER + "conductores", newconductor, Tmio1Conductore.class)
-				.getBody();
+		Tmio1Conductore conductor = restTemplate
+				.postForEntity(SERVER + "conductores", newconductor, Tmio1Conductore.class).getBody();
 		return conductor;
 	}
 

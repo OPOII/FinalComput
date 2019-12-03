@@ -35,7 +35,7 @@ public class RutaDelegateImp extends GenericTemplate implements RutaDelegate {
 
 	@Override
 	public void delRuta(Tmio1Ruta bus) {
-		restTemplate.delete(SERVER + "rutas/" + bus.getId());
+		restTemplate.delete(SERVER + "/api/rutas/" + bus.getId());
 	}
 
 	@Override

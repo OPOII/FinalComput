@@ -20,11 +20,13 @@ import com.example.demo.modelo.Tmio1Sitio;
 import com.example.demo.service.Tmio1SitioService;
 import com.example.demo.validation.Update;
 import com.example.demo.validation.ValideEdit;
+
 @Controller
 public class SitioController {
 
 	Tmio1Sitio sitio;
 	SitioDelegate delegado;
+
 	@Autowired
 	public SitioController(SitioDelegate servi) {
 		delegado = servi;
@@ -73,15 +75,17 @@ public class SitioController {
 		model.addAttribute("tmio1Sitio", sitio);
 		return "/sitios/editSitios";
 	}
+
 	@PostMapping("/sitios/edit/{id}")
 	public String editarSitio(@PathVariable("id") long id,
-			@RequestParam(value = "action", required = true)String action,@Validated(ValideEdit.class) Tmio1Sitio sitio, BindingResult result,Model model ) {
-			Tmio1Sitio old=delegado.getSitio(id);
-			sitio.setId(old.getId());
-			delegado.addSitio(sitio);
+			@RequestParam(value = "action", required = true) String action,
+			@Validated(ValideEdit.class) Tmio1Sitio sitio, BindingResult result, Model model) {
+		Tmio1Sitio old = delegado.getSitio(id);
+		sitio.setId(old.getId());
+		delegado.addSitio(sitio);
 		return "redirect:/sitios/";
 	}
-	//	@PostMapping("/sitios/eliminate/{id}")
+	// @PostMapping("/sitios/eliminate/{id}")
 //	public String deleteSitio(@RequestParam(value = "action", required = true) String action, @Valid Tmio1Sitio sitio,
 //	BindingResult bindingResult, Model model) {
 //		if (!action.equals("Cancel"))

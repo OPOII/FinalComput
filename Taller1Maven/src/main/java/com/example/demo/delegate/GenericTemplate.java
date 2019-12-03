@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 public abstract class GenericTemplate {
 	RestTemplate restTemplate;
-	final String SERVER = "http://localhost:8080/";
+	final String SERVER = "http://localhost:8082/api/";
 
 	private HttpComponentsClientHttpRequestFactory getClientHttpRequestFactory() {
 		HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();

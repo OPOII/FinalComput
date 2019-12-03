@@ -16,7 +16,7 @@ public class BusDelegateImp extends GenericTemplate implements BusDelegate {
 
 	@Override
 	public Iterable<Tmio1Bus> getBuses() {
-		Tmio1Bus[] bus = restTemplate.getForObject(SERVER +"tmio1Ruta", Tmio1Bus[].class);
+		Tmio1Bus[] bus = restTemplate.getForObject(SERVER +"buses", Tmio1Bus[].class);
 		List<Tmio1Bus> at;
 		try {
 			at = Arrays.asList(bus);

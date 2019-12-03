@@ -13,6 +13,7 @@ import com.example.demo.modelo.Tmio1ServicioPK;
 public class ServiceDelegateImp extends GenericTemplate implements ServiceDelegate {
 
 	public ServiceDelegateImp() {
+		super();
 	}
 
 	@Override
