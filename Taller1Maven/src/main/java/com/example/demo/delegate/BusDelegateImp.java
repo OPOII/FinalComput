@@ -9,17 +9,14 @@ import org.springframework.web.client.RestTemplate;
 import com.example.demo.modelo.Tmio1Bus;
 
 @Component
-public class BusDelegateImp implements BusDelegate {
-	RestTemplate template;
-	final String SERVER = "http://localhost:8082/api/";
+public class BusDelegateImp extends GenericTemplate implements BusDelegate {
 	//A traves del template me conecto al controlador 
 	public BusDelegateImp() {
-		template = new RestTemplate();
 	}
 
 	@Override
 	public Iterable<Tmio1Bus> getBuses() {
-		Tmio1Bus[] bus = template.getForObject(SERVER +"tmio1Ruta", Tmio1Bus[].class);
+		Tmio1Bus[] bus = restTemplate.getForObject(SERVER +"tmio1Ruta", Tmio1Bus[].class);
 		List<Tmio1Bus> at;
 		try {
 			at = Arrays.asList(bus);
@@ -32,19 +29,19 @@ public class BusDelegateImp implements BusDelegate {
 
 	@Override
 	public Tmio1Bus addBus(Tmio1Bus newbus) {
-		Tmio1Bus bus = template.postForEntity(SERVER + "buses", newbus, Tmio1Bus.class).getBody();
+		Tmio1Bus bus = restTemplate.postForEntity(SERVER + "buses", newbus, Tmio1Bus.class).getBody();
 		return bus;
 	}
 
 	@Override
 	public void delBus(Tmio1Bus bus) {
-		template.delete(SERVER + "buses/" + bus.getId());
+		restTemplate.delete(SERVER + "buses/" + bus.getId());
 
 	}
 
 	@Override
 	public Tmio1Bus getBus(Integer i) {
-		Tmio1Bus bus = template.getForObject(SERVER + "buses/" + i, Tmio1Bus.class);
+		Tmio1Bus bus = restTemplate.getForObject(SERVER + "buses/" + i, Tmio1Bus.class);
 		return bus;
 	}
 

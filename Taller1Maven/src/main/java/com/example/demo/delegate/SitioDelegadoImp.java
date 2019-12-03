@@ -9,15 +9,12 @@ import org.springframework.web.client.RestTemplate;
 import com.example.demo.modelo.Tmio1Sitio;
 
 @Component
-public class SitioDelegadoImp implements SitioDelegate {
-	RestTemplate template;
-	final String SERVER = "http://localhost:8082/api/";
+public class SitioDelegadoImp extends GenericTemplate implements SitioDelegate {
 	public SitioDelegadoImp() {
-		template=new RestTemplate();
 	}
 	@Override
 	public Iterable<Tmio1Sitio> getSitios() {
-		Tmio1Sitio[] ruta = template.getForObject(SERVER + "sitios", Tmio1Sitio[].class);
+		Tmio1Sitio[] ruta = restTemplate.getForObject(SERVER + "sitios", Tmio1Sitio[].class);
 		List<Tmio1Sitio> at;
 		try {
 			at = Arrays.asList(ruta);
@@ -29,17 +26,17 @@ public class SitioDelegadoImp implements SitioDelegate {
 	}
 	@Override
 	public Tmio1Sitio addSitio(Tmio1Sitio sitio) {
-		Tmio1Sitio ruta = template.postForEntity(SERVER + "sitios", sitio, Tmio1Sitio.class).getBody();
+		Tmio1Sitio ruta = restTemplate.postForEntity(SERVER + "sitios", sitio, Tmio1Sitio.class).getBody();
 		return ruta;
 	}
 	@Override
 	public void delSitio(Tmio1Sitio sitio) {
-		template.delete(SERVER+"sitios/"+sitio.getId());
+		restTemplate.delete(SERVER+"sitios/"+sitio.getId());
 		
 	}
 	@Override
 	public Tmio1Sitio getSitio(long id) {
-		Tmio1Sitio ruta = template.getForObject(SERVER + "rutas/" + id, Tmio1Sitio.class);
+		Tmio1Sitio ruta = restTemplate.getForObject(SERVER + "rutas/" + id, Tmio1Sitio.class);
 		return ruta;
 	}
 	

@@ -10,17 +10,14 @@ import com.example.demo.modelo.Tmio1Servicio;
 import com.example.demo.modelo.Tmio1ServicioPK;
 
 @Component
-public class ServiceDelegateImp implements ServiceDelegate {
-	RestTemplate template;
-	final String SERVER = "http://localhost:8082/";
+public class ServiceDelegateImp extends GenericTemplate implements ServiceDelegate {
 
 	public ServiceDelegateImp() {
-		template = new RestTemplate();
 	}
 
 	@Override
 	public Iterable<Tmio1Servicio> getServicios() {
-		Tmio1Servicio[] servicio=template.getForObject(SERVER+"/api/servicios/", Tmio1Servicio[].class);
+		Tmio1Servicio[] servicio=restTemplate.getForObject(SERVER+"/api/servicios/", Tmio1Servicio[].class);
 		List<Tmio1Servicio> at;
 		try {
 			at=Arrays.asList(servicio);
@@ -33,19 +30,19 @@ public class ServiceDelegateImp implements ServiceDelegate {
 
 	@Override
 	public Tmio1Servicio addServicio(Tmio1Servicio newbus) {
-		Tmio1Servicio serv=template.postForEntity(SERVER+"/api/servicios/", newbus, Tmio1Servicio.class).getBody();
+		Tmio1Servicio serv=restTemplate.postForEntity(SERVER+"/api/servicios/", newbus, Tmio1Servicio.class).getBody();
 		return serv;
 	}
 
 	@Override
 	public void delServicio(Tmio1Servicio bus) {
-		template.delete(SERVER + "/api/servicios/"+bus.getId());
+		restTemplate.delete(SERVER + "/api/servicios/"+bus.getId());
 		
 	}
 
 	@Override
 	public Tmio1Servicio getServicio(Tmio1ServicioPK i) {
-		Tmio1Servicio car = template.getForObject(SERVER + "/api/servicios/" + i, Tmio1Servicio.class);
+		Tmio1Servicio car = restTemplate.getForObject(SERVER + "/api/servicios/" + i, Tmio1Servicio.class);
 		return car;
 	}
 }

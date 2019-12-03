@@ -20,7 +20,13 @@ public class RutaControllerImp implements RutaController {
 
 	@GetMapping("/api/rutas")
 	public Iterable<Tmio1Ruta> getRutas() {
-		return servicio.findAll();
+		try {
+			return servicio.findAll();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@PostMapping("/api/rutas")
