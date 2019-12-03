@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -81,10 +82,27 @@ public class ServicioController {
 		return "redirect:/servicios/";
 	}
 
-	@GetMapping("/editar/")
-	public String devolver() {
+	@GetMapping("/servicios/editar/{hash}")
+	public String devolver(@PathVariable("hash") Integer id, Model modelo) {
+		Iterable<Tmio1Servicio> servicios=delegado.getServicios();
+		Tmio1Servicio servicio=null;
+		for(Tmio1Servicio ser : servicios) {
+			if(ser.getHash().compareTo(id) == 0) {
+				delegado.delServicio(ser);
+				servicio = ser;
+				break;
+			}
+		}
+		
+		if (servicio == null)
+			throw new IllegalArgumentException("Invalid service Id:" + id);
+		modelo.addAttribute("tmio1Bus", bus.getBuses());
+		modelo.addAttribute("tmio1Conductore", conductor.getConductores());
+		modelo.addAttribute("tmio1Ruta", ruta.getRutas());
+		modelo.addAttribute("tmio1Servicio", servicio);
 		return "servicios/editServicios";
 	}
+	
 
 	@GetMapping("/consultar/")
 	public String a(Model model) {
