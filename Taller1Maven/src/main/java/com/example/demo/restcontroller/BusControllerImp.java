@@ -18,29 +18,44 @@ import com.example.demo.service.ITmio1BusService;
 @RestController
 public class BusControllerImp implements BusController {
 	@Autowired
-	private BusDelegate delegado;
+	private ITmio1BusService servicio;
 	//Esto usa el servicio, no el delegado
 
 	@GetMapping("/api/buses")
 	public Iterable<Tmio1Bus> getBuses() {
-		return delegado.getBuses();
+		return servicio.findAll();
 	}
 
 	@PostMapping("/api/buses")
 	public Tmio1Bus addBus(@RequestBody Tmio1Bus bus) {
-		return delegado.addBus(bus);
+		try {
+			return servicio.agregar(bus);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@DeleteMapping("/api/buses/{id}")
 	public Tmio1Bus delBus(@PathVariable Integer bus) {
-		Tmio1Bus bu = delegado.getBus(bus);
-		delegado.delBus(bu);
-		return bu;
+		Tmio1Bus buscado=null;
+		try {
+			buscado=servicio.buscar(bus);
+			servicio.eliminar(buscado.getId());
+			return buscado;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@GetMapping("/api/buses/{id}")
 	public Tmio1Bus getBus(@PathVariable Integer bus) {
-		return delegado.getBus(bus);
+		try {
+			return servicio.buscar(bus);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

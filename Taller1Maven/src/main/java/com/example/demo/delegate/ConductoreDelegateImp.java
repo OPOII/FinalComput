@@ -11,7 +11,7 @@ import com.example.demo.modelo.Tmio1Conductore;
 @Component
 public class ConductoreDelegateImp implements ConductoreDelegate {
 	RestTemplate template;
-	final String SERVER = "http://localhost:8082/";
+	final String SERVER = "http://localhost:8082/api/";
 
 	public ConductoreDelegateImp() {
 		template = new RestTemplate();

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,7 @@ import com.example.demo.validation.Update;
 @Controller
 public class BusController {
 
-	Tmio1BusService servicio;
+//	Tmio1BusService servicio;
 	Tmio1Bus universal;
 	//Delegado hace un llamado al rest template, y el rest template llama al rest controller
 	@Autowired
@@ -36,39 +37,36 @@ public class BusController {
 	//Corregir todo esto, ya que aqui se usa el delegado
 	
 	@Autowired
-	public BusController(Tmio1BusService servi) {
-		servicio = servi;
+	public BusController(BusDelegate servi) {
+		delegado = servi;
 	}
-
+	
 	@GetMapping("/buses/")
 	public String indexBuses(Model model) {
-		model.addAttribute("tmio1Bus", servicio.findAll());
+		model.addAttribute("tmio1Bus", delegado.getBuses());
 		return "buses/indexBuses";
 	}
-
 	@GetMapping("/buses/add")
 	public String addBus(Model model) {
 		model.addAttribute("tmio1Bus", new Tmio1Bus());
 		return "buses/addBuses";
 	}
-
 	@PostMapping("/buses/add")
-	public String saveBus(@RequestParam(value = "action", required = true) String action, @Valid Tmio1Bus bus,
-			BindingResult bindingResult, Model model) throws Exception {
+	public String saveBus(@Valid @ModelAttribute Tmio1Bus bus, BindingResult bindingResult,
+			@RequestParam(value = "action", required = true) String action, Model modelo) {
 		if (!action.equals("Cancel"))
 			if (bindingResult.hasErrors()) {
 				return "buses/addBuses";
 			} else {
-				servicio.agregar(bus);
+				delegado.addBus(bus);
 				System.out.println(bus.getMarca());
 			}
 		return "redirect:/buses/";
-
 	}
 
 	@GetMapping("/search/")
 	public String lobbySearch(Model model) {
-		model.addAttribute("tmio1Bus", servicio.findAll());
+		model.addAttribute("tmio1Bus", delegado.getBuses());
 		return "searchIndex";
 	}
 
@@ -85,7 +83,7 @@ public class BusController {
 			if (bindingResult.hasErrors()) {
 				return "buses/searchBus";
 			} else {
-				Tmio1Bus bur = servicio.buscar(bus.getId());
+				Tmio1Bus bur = delegado.getBus(bus.getId());
 				if (bur != null) {
 					universal=bur;
 					System.out.println("Si hay bus");

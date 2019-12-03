@@ -18,28 +18,43 @@ import com.example.demo.service.ITmio1ConductoreService;
 public class ConductorControllerImp implements ConductorController {
 
 	@Autowired
-	private ConductoreDelegate delegado;
-
+	private ITmio1ConductoreService servicio;
 	@GetMapping("/api/conductores")
 	public Iterable<Tmio1Conductore> getConductores() {
-		return delegado.getConductores();
+		return servicio.findAll();
 	}
 
 	@PostMapping("/api/conductores")
 	public Tmio1Conductore addConductor(@RequestBody Tmio1Conductore conductor) {
-		return delegado.addConductor(conductor);
+		try {
+			return servicio.agregar(conductor);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@DeleteMapping("/api/conductores/{id}")
 	public Tmio1Conductore delConductor(@PathVariable String conductor) {
-		Tmio1Conductore c=delegado.getConductore(conductor);
-		 delegado.delConductore(c);
-		 return c;
+		Tmio1Conductore buscado=null;
+		try {
+			buscado=servicio.buscar(conductor);
+			servicio.eliminar(buscado.getCedula());
+			return buscado;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+				
 	}
 
 	@GetMapping("/api/conductores/{id}")
 	public Tmio1Conductore getConductor(@PathVariable String cedula) {
-		return delegado.getConductore(cedula);
+		try {
+			return servicio.buscar(cedula);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 //	@GetMapping("/api/conductores")
