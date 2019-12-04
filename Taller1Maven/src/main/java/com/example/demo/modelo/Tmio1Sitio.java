@@ -2,6 +2,9 @@ package com.example.demo.modelo;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import lombok.Data;
+
 import java.util.List;
 
 
@@ -12,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name="tmio1_sitios")
 @NamedQuery(name="Tmio1Sitio.findAll", query="SELECT t FROM Tmio1Sitio t")
+@Data
 public class Tmio1Sitio implements Serializable {
 	private static final long serialVersionUID = 1L;
 

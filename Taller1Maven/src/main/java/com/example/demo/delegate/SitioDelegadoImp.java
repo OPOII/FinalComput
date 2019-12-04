@@ -36,12 +36,14 @@ public class SitioDelegadoImp extends GenericTemplate implements SitioDelegate {
 
 	@Override
 	public void delSitio(Tmio1Sitio sitio) {
+		System.out.println("Entra al delegado");
 		restTemplate.delete(SERVER + "sitios/" + sitio.getId());
 
 	}
 
 	@Override
 	public Tmio1Sitio getSitio(long id) {
+		System.out.println("Entra el sitio para obtener el sition en el delegado");
 		Tmio1Sitio ruta = restTemplate.getForObject(SERVER + "sitios/" + id, Tmio1Sitio.class);
 		return ruta;
 	}

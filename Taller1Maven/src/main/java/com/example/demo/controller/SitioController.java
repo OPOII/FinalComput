@@ -83,6 +83,7 @@ public class SitioController {
 	public String editarSitio(@PathVariable("id") long id,
 			@RequestParam(value = "action", required = true) String action,
 			@Validated(ValideEdit.class) Tmio1Sitio sitio, BindingResult result, Model model) {
+		System.out.println("Entro al postMapping de editar");
 		Tmio1Sitio old = delegado.getSitio(id);
 		sitio.setId(old.getId());
 		delegado.addSitio(sitio);

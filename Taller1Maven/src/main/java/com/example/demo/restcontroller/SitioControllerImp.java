@@ -46,8 +46,9 @@ public class SitioControllerImp implements SitioController {
 	}
 
 	@GetMapping("/api/sitios/{id}")
-	public Tmio1Sitio getSitio(long id) {
+	public Tmio1Sitio getSitio(@PathVariable long id) {
 		try {
+			System.out.println("Entro");
 			return servicio.buscar(id);
 		} catch (Exception e) {
 			e.printStackTrace();
