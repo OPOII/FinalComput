@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 
 		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/sitios/**").hasRole(UserType.admin.toString())
-				.antMatchers("/servicios/**").hasRole(UserType.admin.toString()).antMatchers("/buses/**")
+				.antMatchers("/servicios/**").hasRole(UserType.operator.toString()).antMatchers("/buses/**")
 				.hasRole(UserType.admin.toString()).antMatchers("/conductores/**").hasRole(UserType.admin.toString())
 				.antMatchers("/rutas/**").hasRole(UserType.admin.toString()).antMatchers("/api/**").permitAll()
 				.antMatchers("/**").authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
