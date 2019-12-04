@@ -40,7 +40,9 @@ public class Tmio1ConductoreService implements ITmio1ConductoreService {
 		if (conductor != null && conductor.getCedula() != "" && conductor.getNombre() != ""
 				&& conductor.getFechaNacimiento() != null
 				&& conductor.getFechaContratacion().isAfter(conductor.getFechaNacimiento()) == true) {
+			System.out.println("Entro a intentarGuardar");
 			repositorio.save(conductor);
+			repositorio.findByCedula(conductor.getCedula()+"Intenta buscar al conductor");
 			return conductor;
 		} else {
 			System.out.println("Entro");

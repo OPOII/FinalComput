@@ -20,6 +20,7 @@ public class ConductoreDao implements ITConductoresDao{
 	private EntityManager manager;
 	@Override
 	public void save(Tmio1Conductore entity) {
+		System.out.println("Entro al Dao e intenta salvarlo");
 		manager.persist(entity);
 	}
 

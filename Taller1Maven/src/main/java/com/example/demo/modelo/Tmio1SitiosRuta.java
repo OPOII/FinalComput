@@ -36,7 +36,7 @@ public class Tmio1SitiosRuta implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_sitio", insertable=false, updatable=false)
 	private Tmio1Sitio tmio1Sitio2;
-
+	private Integer hash;
 	public Tmio1SitiosRuta() {
 	}
 
@@ -78,6 +78,14 @@ public class Tmio1SitiosRuta implements Serializable {
 
 	public void setTmio1Sitio2(Tmio1Sitio tmio1Sitio2) {
 		this.tmio1Sitio2 = tmio1Sitio2;
+	}
+
+	public Integer getHash() {
+		return hash;
+	}
+
+	public void setHash(Integer hash) {
+		this.hash = hash;
 	}
 
 }

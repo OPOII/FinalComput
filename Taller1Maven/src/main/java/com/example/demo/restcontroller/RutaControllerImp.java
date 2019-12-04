@@ -22,7 +22,7 @@ public class RutaControllerImp implements RutaController {
 	public Iterable<Tmio1Ruta> getRutas() {
 		try {
 			return servicio.findAll();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

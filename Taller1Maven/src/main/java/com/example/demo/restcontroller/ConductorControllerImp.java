@@ -28,6 +28,7 @@ public class ConductorControllerImp implements ConductorController {
 	@PostMapping("/api/conductores")
 	public Tmio1Conductore addConductor(@RequestBody Tmio1Conductore conductor) {
 		try {
+			System.out.println("Entro al postMapping del controller");
 			return servicio.agregar(conductor);
 		} catch (Exception e) {
 			e.printStackTrace();
