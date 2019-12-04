@@ -61,5 +61,11 @@ public class ConductoreDao implements ITConductoresDao{
 		TypedQuery<Object[]>lista=manager.createQuery(jpql,Object[].class);
 		return lista.setParameter("theDate", fecha).getResultList();
 	}
+
+	@Override
+	public List<Tmio1Conductore> findAll() {
+		String jpql="Select a FROM Tmio1Bus a";
+		return manager.createQuery(jpql).getResultList();
+	}
 	
 }

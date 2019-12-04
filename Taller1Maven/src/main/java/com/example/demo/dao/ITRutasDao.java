@@ -15,4 +15,5 @@ public interface ITRutasDao {
 	public List<Tmio1Ruta> findByFecha(BigDecimal diaInicio, BigDecimal diaFIn);
 	public List<Tmio1Ruta>findByHoras(BigDecimal inicio, BigDecimal fin);
 	public List<Tmio1Ruta>findByFecha(LocalDate date);
+	public List<Tmio1Ruta>findAll();
 }

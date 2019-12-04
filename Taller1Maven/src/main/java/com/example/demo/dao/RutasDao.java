@@ -59,5 +59,12 @@ public class RutasDao implements ITRutasDao{
 		query.setParameter("date", date);
 		return query.getResultList();
 	}
+
+	@Override
+	public List<Tmio1Ruta> findAll() {
+		String jpql="Select a FROM Tmio1Ruta a";
+		return manager.createQuery(jpql).getResultList();
+	
+	}
 	
 }

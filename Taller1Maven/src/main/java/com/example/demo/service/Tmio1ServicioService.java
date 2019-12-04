@@ -3,6 +3,7 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.ITServiciosDao;
 import com.example.demo.modelo.Tmio1Servicio;
 import com.example.demo.modelo.Tmio1ServicioPK;
 import com.example.demo.repository.ServicioRepositorio;
@@ -10,21 +11,22 @@ import com.example.demo.repository.ServicioRepositorio;
 @Service
 public class Tmio1ServicioService implements ITmio1ServicioService {
 	@Autowired
-	private ServicioRepositorio repositorio;
+	private ITServiciosDao repositorio;
 
-	public Tmio1ServicioService(ServicioRepositorio serv) {
+	public Tmio1ServicioService(ITServiciosDao serv) {
 		repositorio = serv;
 	}
 
 	@Override
 	public void eliminar(Tmio1ServicioPK servicio) {
-		repositorio.deleteById(servicio);
-		}
+		Tmio1Servicio s=repositorio.buscar(servicio);
+		repositorio.delete(s);
+	}
 
 	@Override
 	public Tmio1Servicio buscar(Tmio1ServicioPK servicio) throws Exception {
 		if (servicio != null) {
-			return repositorio.findById(servicio).get();
+			return repositorio.buscar(servicio);
 		} else {
 			throw new Exception("No se puede encontrar la ruta que busca por que el parametro de busqueda es nulo");
 		}
@@ -47,7 +49,6 @@ public class Tmio1ServicioService implements ITmio1ServicioService {
 
 	@Override
 	public Iterable<Tmio1Servicio> findAll() {
-		// TODO Auto-generated method stub
 		return repositorio.findAll();
 	}
 

@@ -16,10 +16,10 @@ public class SitioDelegadoImp extends GenericTemplate implements SitioDelegate {
 
 	@Override
 	public Iterable<Tmio1Sitio> getSitios() {
-		Tmio1Sitio[] ruta = restTemplate.getForObject(SERVER + "sitios", Tmio1Sitio[].class);
+		Tmio1Sitio[] sitio = restTemplate.getForObject(SERVER + "sitios", Tmio1Sitio[].class);
 		List<Tmio1Sitio> at;
 		try {
-			at = Arrays.asList(ruta);
+			at = Arrays.asList(sitio);
 			return at;
 		} catch (Exception e) {
 			e.printStackTrace();

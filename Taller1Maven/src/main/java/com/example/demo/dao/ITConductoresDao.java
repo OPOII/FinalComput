@@ -15,4 +15,5 @@ public interface ITConductoresDao {
 	public List<Tmio1Conductore> findByNombre(String nombre);
 	public List<Tmio1Conductore> findByApellidos(String apellidos);
 	public Iterable<Object[]> findByFecha(LocalDate fecha);
+	public List<Tmio1Conductore>findAll();
 }

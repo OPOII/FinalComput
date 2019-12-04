@@ -13,6 +13,8 @@ public class SitioControllerImp implements SitioController{
 
 	@Autowired
 	private ITmio1SitioService servicio;
+	
+	
 	@GetMapping("/api/sitios")
 	public Iterable<Tmio1Sitio> getSitios() {
 		return servicio.findAll();
