@@ -3,12 +3,14 @@ package com.example.demo.restcontroller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modelo.Tmio1Sitio;
 import com.example.demo.service.ITmio1SitioService;
-
+@RestController
 public class SitioControllerImp implements SitioController {
 
 	@Autowired
@@ -31,7 +33,7 @@ public class SitioControllerImp implements SitioController {
 	}
 
 	@DeleteMapping("/api/sitios/{id}")
-	public Tmio1Sitio delSitio(long id) {
+	public Tmio1Sitio delSitio(@PathVariable long id) {
 		Tmio1Sitio buscado = null;
 		try {
 			buscado = servicio.buscar(id);

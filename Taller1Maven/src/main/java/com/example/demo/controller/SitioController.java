@@ -58,6 +58,7 @@ public class SitioController {
 
 	@GetMapping("/sitios/eliminate/{id}")
 	public String delSitio(@PathVariable("id") long id) {
+		System.out.println("Primera Capa");
 		try {
 			Tmio1Sitio sitio = delegado.getSitio(id);
 			delegado.delSitio(sitio);
@@ -71,7 +72,9 @@ public class SitioController {
 
 	@GetMapping("/sitios/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
+		System.out.println("Entra a la primera capa");
 		Tmio1Sitio sitio = delegado.getSitio(id);
+		System.out.println(sitio.getDescripcion()+"Entro a la primera capa");
 		model.addAttribute("tmio1Sitio", sitio);
 		return "/sitios/editSitios";
 	}
