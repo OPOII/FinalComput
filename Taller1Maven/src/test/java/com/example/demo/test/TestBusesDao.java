@@ -53,6 +53,7 @@ public class TestBusesDao {
 		bus.setModelo(modelo);
 		bus.setTipo("T");
 		busesDao.save(bus);
+		assertNotNull(busesDao.findById(1));
 	}
 	@Test
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED,rollbackFor=Exception.class)

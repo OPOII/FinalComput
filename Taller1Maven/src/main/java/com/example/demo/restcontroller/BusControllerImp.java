@@ -28,14 +28,9 @@ public class BusControllerImp implements BusController {
 
 	@PostMapping("/api/buses")
 	public Tmio1Bus addBus(@RequestBody Tmio1Bus bus) {
-		try {
-			return servicio.agregar(bus);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		servicio.agregar(bus);
+		return bus;
 	}
-
 	@DeleteMapping("/api/buses/{id}")
 	public Tmio1Bus delBus(@PathVariable Integer bus) {
 		Tmio1Bus buscado=null;

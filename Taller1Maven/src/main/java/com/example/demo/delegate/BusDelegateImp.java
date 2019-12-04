@@ -12,6 +12,7 @@ import com.example.demo.modelo.Tmio1Bus;
 public class BusDelegateImp extends GenericTemplate implements BusDelegate {
 	//A traves del template me conecto al controlador 
 	public BusDelegateImp() {
+		super();
 	}
 
 	@Override

@@ -57,7 +57,6 @@ public class BusController {
 				return "buses/addBuses";
 			} else {
 				delegado.addBus(bus);
-				System.out.println(bus.getMarca());
 			}
 		return "redirect:/buses/";
 	}

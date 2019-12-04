@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.example.demo.model.UserType;
+
 //import co.edu.icesi.ci.thymeval.model.UserType;
 
 @Configuration
@@ -43,8 +45,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-		httpSecurity.authorizeRequests().antMatchers("/api/**").permitAll().antMatchers("/**").authenticated().and().formLogin().loginPage("/login")
-				.permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true)
+		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/sitios/**").hasRole(UserType.admin.toString())
+				.antMatchers("/servicios/**").hasRole(UserType.admin.toString()).antMatchers("/buses/**")
+				.hasRole(UserType.admin.toString()).antMatchers("/conductores/**").hasRole(UserType.admin.toString())
+				.antMatchers("/rutas/**").hasRole(UserType.admin.toString()).antMatchers("/api/**").permitAll()
+				.antMatchers("/**").authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
+				.invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
 				.permitAll().and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
 //		httpSecurity.authorizeRequests().antMatchers("/**").authenticated().and().authorizeRequests()

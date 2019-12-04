@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +18,14 @@ public class Tmio1RutaService implements ITmio1RutaService {
 	public Tmio1RutaService(ITRutasDao serv) {
 		repositorio = serv;
 	}
-
+	@Transactional
 	@Override
 	public Tmio1Ruta eliminar(Integer ruta) {
 		Tmio1Ruta r = repositorio.findById(ruta);
 		repositorio.delete(r);
 		return r;
 	}
-
+	@Transactional
 	@Override
 	public Tmio1Ruta buscar(Integer ruta) throws Exception {
 		if (ruta != null) {
@@ -32,7 +34,7 @@ public class Tmio1RutaService implements ITmio1RutaService {
 			throw new Exception("No se puede buscar la ruta por que el parametro esta vacio");
 		}
 	}
-
+	@Transactional
 	@Override
 	public Tmio1Ruta agregar(Tmio1Ruta ruta) throws Exception {
 		if (ruta != null && ruta.getHoraInicio().doubleValue() < ruta.getHoraFin().doubleValue()
@@ -47,14 +49,14 @@ public class Tmio1RutaService implements ITmio1RutaService {
 //			throw new Exception("Los campos para agregar la ruta no cumplen con los parametros");
 //		}
 	}
-
+	@Transactional
 	@Override
 	public void modificar(Tmio1Ruta ruta) throws Exception {
 //		Tmio1Ruta ru=buscar(ruta.getId());
 //		eliminar(ru.getId());
 //		repositorio.Modificar(ruta);
 	}
-
+	@Transactional
 	@Override
 	public Iterable<Tmio1Ruta> findAll() {
 		return repositorio.findAll();
