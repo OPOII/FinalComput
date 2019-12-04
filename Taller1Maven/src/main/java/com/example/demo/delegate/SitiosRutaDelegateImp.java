@@ -35,13 +35,13 @@ public class SitiosRutaDelegateImp extends GenericTemplate implements SitioRutaD
 
 	@Override
 	public void delRuta(Tmio1SitiosRuta sitio) {
-		restTemplate.delete(SERVER+"rutas/"+sitio.ge);
+		restTemplate.delete(SERVER+"rutas/"+sitio.getHash());
 		
 	}
 
 	@Override
 	public Tmio1SitiosRuta getSitiosRuta(Tmio1SitiosRutaPK id) {
-		// TODO Auto-generated method stub
+		Tmio1SitiosRuta rut=restTemplate.getForObject(SERVER+"rutassitios/"+id, Tmio1SitiosRuta.class);
 		return null;
 	}
 	
