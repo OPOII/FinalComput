@@ -63,9 +63,15 @@
 					<p>
 						<a href="/buses/"><i class="fas fa-bus ml-2"></i> Go to Buses</a>
 					</p>
+				</div>
+				<div sec:authorize="hasRole('admin')">
 					<p>
-						<a href="/sitios/"><i class="fas fa-bus ml-2"></i> Go to
-							Sitios</a>
+						<a href="/sitios/"><i class="fas fa-search ml-2"></i> Go to Sitios</a>
+					</p>
+				</div>
+				<div sec:authorize="hasRole('admin')">
+					<p>
+						<a href="/sitiosrutas/"><i class="fas fa-search ml-2"></i> Go to sitiosRuta</a>
 					</p>
 				</div>
 				<div sec:authorize="hasRole('admin')">

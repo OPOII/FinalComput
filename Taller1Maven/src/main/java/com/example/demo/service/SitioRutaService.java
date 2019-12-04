@@ -3,11 +3,12 @@ package com.example.demo.service;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ITSitiosRutasDao;
 import com.example.demo.modelo.Tmio1SitiosRuta;
 import com.example.demo.modelo.Tmio1SitiosRutaPK;
-
+@Service
 public class SitioRutaService implements InterfazSitioRuta {
 
 	private ITSitiosRutasDao sitiosRepository;
